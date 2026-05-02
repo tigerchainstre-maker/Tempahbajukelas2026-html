@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 Mulia Store - iOS 26 Glass Edition</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Latar belakang Biru Langit (Sky Blue) */
+            background: linear-gradient(135deg, #87CEEB 0%, #00BFFF 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            overflow: hidden;
+        }
+
+        /* Kesan Glassmorphism iOS 26 */
+        .glass-card {
+            width: 92%;
+            max-width: 420px;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(25px) saturate(200%);
+            -webkit-backdrop-filter: blur(25px) saturate(200%);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            color: white;
+            animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -1.5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            margin-left: 12px;
+            opacity: 0.9;
+        }
+
+        /* Input & Select Gaya Kaca */
+        input[type="text"], select {
+            width: 100%;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 22px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+            -webkit-appearance: none;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        input:focus, select:focus {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: scale(1.02);
+        }
+
+        option {
+            background-color: #00BFFF;
+            color: white;
+        }
+
+        /* Butang Sahkan iOS Premium */
+        button {
+            width: 100%;
+            padding: 20px;
+            background: #ffffff;
+            color: #007AFF;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        button:active {
+            transform: scale(0.95);
+            opacity: 0.9;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 10px;
+            opacity: 0.5;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="glass-card">
+    <h1>6 Mulia</h1>
+    <p class="subtitle">Borang Pembelian Baju</p>
+    
+    <form id="bajuForm" action="mailto:hadifroblox2014@gmail.com" method="post" enctype="text/plain">
+        
+        <div class="form-group">
+            <label>Nama Pembeli</label>
+            <input type="text" id="nama" name="Nama" placeholder="Nama penuh anda" required>
+        </div>
+
+        <div class="form-group">
+            <label>Pilih Saiz</label>
+            <select id="saiz" name="Saiz" required>
+                <option value="" disabled selected>Pilih saiz baju</option>
+                <option value="XXS">XXS</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+                <option value="XXXL">XXXL</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Jenis Lengan</label>
+            <select id="lengan" name="Lengan" required>
+                <option value="Pendek">Lengan Pendek</option>
+                <option value="Panjang">Lengan Panjang</option>
+            </select>
+        </div>
+
+        <button type="submit">SAHKAN PEMBELIAN</button>
+    </form>
+
+    <div class="footer">SYSTEM BY HADIF • 2026</div>
+</div>
+
+<script>
+    const form = document.getElementById('bajuForm');
+    
+    form.addEventListener('submit', function(e) {
+        const nama = document.getElementById('nama').value;
+        const saiz = document.getElementById('saiz').value;
+        const lengan = document.getElementById('lengan').value;
+        
+        // Menyusun subjek dan isi kandungan emel dengan email baru
+        const subject = encodeURIComponent("Tempahan Baju Kelas: " + nama);
+        const body = encodeURIComponent(
+            "MAKLUMAT TEMPAHAN BAJU KELAS 6 MULIA\n" +
+            "----------------------------------\n" +
+            "Nama: " + nama + "\n" +
+            "Saiz: " + saiz + "\n" +
+            "Jenis Lengan: " + lengan + "\n" +
+            "----------------------------------\n" +
+            "Sila klik butang hantar untuk mengesahkan pembelian anda kepada Hadif."
+        );
+        
+        // Kemas kini action mailto ke email hadifroblox2014@gmail.com
+        this.action = "mailto:hadifroblox2014@gmail.com?subject=" + subject + "&body=" + body;
+        
+        alert("Aplikasi e-mel anda akan dibuka. Sila klik 'Hantar' untuk menghantar maklumat kepada Hadif.");
+    });
+</script>
+
+</body>
+</html>
